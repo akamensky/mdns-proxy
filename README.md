@@ -56,7 +56,9 @@ For each application that you want to be accessible on local network via mDNS ad
 ```
 $ ./mdns-proxy -h
   -listenAddr string
-    	Specify the address to listen on (default "0.0.0.0:80")
+        Specify the address to listen on (default "0.0.0.0:80")
+  -localSuffix string
+        Specify the local suffix used for mDNS network (default "local")
 ```
 
 ## License
