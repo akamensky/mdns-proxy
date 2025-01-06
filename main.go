@@ -2,6 +2,7 @@ package main
 
 import (
 	"log/slog"
+	"mdns-proxy/config"
 	"mdns-proxy/docker"
 	"mdns-proxy/mdns"
 	"mdns-proxy/proxy"
@@ -39,9 +40,9 @@ func do() {
 
 	newNames := make([]string, 0, len(newServices))
 	newProxyRules := make(map[string]string)
-	// Generate new names list by appending `.local` to name
+	// Generate new names list by appending configured suffix to the name
 	for _, svc := range newServices {
-		name := svc.Name() + ".local"
+		name := svc.Name() + "." + config.LocalSuffix
 		newNames = append(newNames, name)
 		newProxyRules[name] = svc.Address()
 	}
